@@ -53,7 +53,7 @@ The graph data is selected from CFPQ_Data dataset. Graphs related to RDF analysi
 
 The results of the most probable paths problem on graphs related to RDF analysis are listed below.
 
-**g<sub>1</sub>**
+For query **g<sub>1</sub>**:
 ```
 S -> subClassOf_r S subClassOf (0.4)
 S -> subClassOf_r subClassOf (0.25)
@@ -72,9 +72,9 @@ S -> type_r type (0.15)
     </tr>
     <tr>
         <td>it</td>
-        <td>time</td>
+        <td>time(sec)</td>
         <td>it</td>
-        <td>time</td>
+        <td>time(sec)</td>
     </tr>
   </thead>
   <tbody>
@@ -192,7 +192,7 @@ S -> type_r type (0.15)
 </table>
 
 
-**g<sub>2</sub>**
+For query **g<sub>2</sub>**:
 ```
 S -> subClassOf_r S subClassOf (0.45)
 S -> subClassOf (0.55)
@@ -210,9 +210,9 @@ S -> subClassOf (0.55)
     </tr>
     <tr>
         <td>it</td>
-        <td>time</td>
+        <td>time(sec)</td>
         <td>it</td>
-        <td>time</td>
+        <td>time(sec)</td>
     </tr>
   </thead>
   <tbody>
