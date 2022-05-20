@@ -24,6 +24,7 @@ You can download grammar and graph from file:
 ```
 grm = Grammar(grammars_path)
 grh = Graph(graph_path)
+grh.fill()
 ```
 And then construct the equation with:
 ```
@@ -50,8 +51,14 @@ The graph data is selected from CFPQ_Data dataset. Graphs related to RDF analysi
 
 ## Performance
 
+The results of the most probable paths problem on graphs related to RDF analysis are listed below.
 
-|--------------|--------|---------|--------|----|--------|----|-------|
+**g<sub>1</sub>**
+```
+S -> subClassOf_r S subClassOf | subClassOf_r subClassOf 
+     | type_r S type | type_r type
+```
+
 | Graph        |   V    |    E    |  nnz   | it |  time  | it | time  |
 |--------------|--------|---------|--------|----|--------|----|-------|
 | generations  | 129    | 273     | 2164   | 5  | 0.02   | 2  | 0.4   |
@@ -66,6 +73,11 @@ The graph data is selected from CFPQ_Data dataset. Graphs related to RDF analysi
 | go-hierarchy | 45007  | 490109  | 588976 | 17 | 8.3    | 10 | 144.2 |
 | geospecies   | 450609 | 2201532 | 91     | 3  | 0.2    | 3  | 9.6   |
 
+
+**g<sub>2</sub>**
+```
+S -> subClassOf_r S subClassOf | subClassOf
+```
 
 | Graph        |   V    |    E    |  nnz   | it |  time | it | time  |
 |--------------|--------|---------|--------|----|-------|----|-------|
