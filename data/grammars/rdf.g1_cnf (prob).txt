@@ -1,0 +1,6 @@
+S -> VAR:t_r C1 0.2
+C1 -> S VAR:t 1.0
+S -> VAR:sco_r VAR:sco 0.25
+S -> VAR:sco_r C2 0.4
+S -> VAR:t_r VAR:t 0.15
+C2 -> S VAR:sco 1.0

@@ -1,0 +1,3 @@
+S -> VAR:sco 0.45
+S -> VAR:sco_r C1 0.55
+C1 -> S VAR:sco 1.0
