@@ -55,8 +55,10 @@ The results of the most probable paths problem on graphs related to RDF analysis
 
 **g<sub>1</sub>**
 ```
-S -> subClassOf_r S subClassOf | subClassOf_r subClassOf 
-     | type_r S type | type_r type
+S -> subClassOf_r S subClassOf (0.4)
+S -> subClassOf_r subClassOf (0.25)
+S -> type_r S type (0.2)
+S -> type_r type (0.15)
 ```
 <table>
     <thead>
@@ -192,7 +194,8 @@ S -> subClassOf_r S subClassOf | subClassOf_r subClassOf
 
 **g<sub>2</sub>**
 ```
-S -> subClassOf_r S subClassOf | subClassOf
+S -> subClassOf_r S subClassOf (0.45)
+S -> subClassOf (0.55)
 ```
 
 <table>
