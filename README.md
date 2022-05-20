@@ -17,6 +17,9 @@ SCFPQ requires the following to run:
 
 ## Usage
 
+```
+from main_structures import Grammar, Graph, Equation
+```
 You can download grammar and graph from file:
 ```
 grm = Grammar(grammars_path)
