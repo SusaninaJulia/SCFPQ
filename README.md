@@ -59,16 +59,23 @@ S -> subClassOf_r S subClassOf | subClassOf_r subClassOf
      | type_r S type | type_r type
 ```
 <table>
+    <thead>
     <tr>
-        <td>Graph</td>
-        <td>V</td>
-        <td>E</td>
-        <td>nnz</td>
+      <th rowspan="2" align="left">Graph</th>
+      <th rowspan="2" align="left">V</th>
+      <th rowspan="2" align="left">E</th>
+      <th rowspan="2" align="left">nnz</th>
+      <th colspan="2" align="center">naive-iteration</sub></th>
+      <th colspan="2" align="center">newton-krylov</sub></th>
+    </tr>
+    <tr>
         <td>it</td>
         <td>time</td>
         <td>it</td>
         <td>time</td>
     </tr>
+  </thead>
+  <tbody>
     <tr>
         <td>generations</td>
         <td>129</td>
@@ -179,6 +186,7 @@ S -> subClassOf_r S subClassOf | subClassOf_r subClassOf
         <td>3</td>
         <td>9.6</td>
     </tr>
+  </tbody>
 </table>
 
 
@@ -188,16 +196,23 @@ S -> subClassOf_r S subClassOf | subClassOf
 ```
 
 <table>
+    <thead>
     <tr>
-        <td>Graph</td>
-        <td>V</td>
-        <td>E</td>
-        <td>nnz</td>
+      <th rowspan="2" align="left">Graph</th>
+      <th rowspan="2" align="left">V</th>
+      <th rowspan="2" align="left">E</th>
+      <th rowspan="2" align="left">nnz</th>
+      <th colspan="2" align="center">naive-iteration</sub></th>
+      <th colspan="2" align="center">newton-krylov</sub></th>
+    </tr>
+    <tr>
         <td>it</td>
         <td>time</td>
         <td>it</td>
         <td>time</td>
     </tr>
+  </thead>
+  <tbody>
     <tr>
         <td>generations</td>
         <td>129</td>
@@ -308,4 +323,5 @@ S -> subClassOf_r S subClassOf | subClassOf
         <td>0</td>
         <td>&lt;0.01</td>
     </tr>
+  </tbody>
 </table>
