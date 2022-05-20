@@ -58,20 +58,128 @@ The results of the most probable paths problem on graphs related to RDF analysis
 S -> subClassOf_r S subClassOf | subClassOf_r subClassOf 
      | type_r S type | type_r type
 ```
-
-| Graph        |   V    |    E    |  nnz   | it |  time  | it | time  |
-|--------------|--------|---------|--------|----|--------|----|-------|
-| generations  | 129    | 273     | 2164   | 5  | 0.02   | 2  | 0.4   |
-| travel       | 131    | 277     | 2499   | 11 | 0.05   | 3  | 0.6   |
-| funding      | 778    | 1086    | 17634  | 9  | 0.04   | 3  | 0.7   |
-| wine         | 733    | 1839    | 66572  | 11 | 0.06   | 3  | 0.7   |
-| pizza        | 671    | 1980    | 15195  | 15 | 0.09   | 4  | 0.9   |
-| core         | 1323   | 2752    | 204    | 50 | 0.3    | 4  | 0.9   |
-| pathways     | 6238   | 12363   | 884    | 9  | 0.2    | 4  | 2.1   |
-| enzyme       | 48815  | 86543   | 396    | 9  | 0.2    | 4  | 5.2   |
-| eclass       | 239111 | 360248  | 90994  | 11 | 19.6   | -  | -     |
-| go-hierarchy | 45007  | 490109  | 588976 | 17 | 8.3    | 10 | 144.2 |
-| geospecies   | 450609 | 2201532 | 91     | 3  | 0.2    | 3  | 9.6   |
+<table>
+    <tr>
+        <td>Graph</td>
+        <td>V</td>
+        <td>E</td>
+        <td>nnz</td>
+        <td>it</td>
+        <td>time</td>
+        <td>it</td>
+        <td>time</td>
+    </tr>
+    <tr>
+        <td>generations</td>
+        <td>129</td>
+        <td>273</td>
+        <td>2164</td>
+        <td>5</td>
+        <td>0.02</td>
+        <td>2</td>
+        <td>0.4</td>
+    </tr>
+    <tr>
+        <td>travel</td>
+        <td>131</td>
+        <td>277</td>
+        <td>2499</td>
+        <td>11</td>
+        <td>0.05</td>
+        <td>3</td>
+        <td>0.6</td>
+    </tr>
+    <tr>
+        <td>funding</td>
+        <td>778</td>
+        <td>1086</td>
+        <td>17634</td>
+        <td>9</td>
+        <td>0.04</td>
+        <td>3</td>
+        <td>0.7</td>
+    </tr>
+    <tr>
+        <td>wine</td>
+        <td>733</td>
+        <td>1839</td>
+        <td>66572</td>
+        <td>11</td>
+        <td>0.06</td>
+        <td>3</td>
+        <td>0.7</td>
+    </tr>
+    <tr>
+        <td>pizza</td>
+        <td>671</td>
+        <td>1980</td>
+        <td>15195</td>
+        <td>15</td>
+        <td>0.09</td>
+        <td>4</td>
+        <td>0.9</td>
+    </tr>
+    <tr>
+        <td>core</td>
+        <td>1323</td>
+        <td>2752</td>
+        <td>204</td>
+        <td>50</td>
+        <td>0.3</td>
+        <td>4</td>
+        <td>0.9</td>
+    </tr>
+    <tr>
+        <td>pathways</td>
+        <td>6238</td>
+        <td>12363</td>
+        <td>884</td>
+        <td>9</td>
+        <td>0.2</td>
+        <td>4</td>
+        <td>2.1</td>
+    </tr>
+    <tr>
+        <td>enzyme</td>
+        <td>48815</td>
+        <td>86543</td>
+        <td>396</td>
+        <td>9</td>
+        <td>0.2</td>
+        <td>4</td>
+        <td>5.2</td>
+    </tr>
+    <tr>
+        <td>eclass</td>
+        <td>239111</td>
+        <td>360248</td>
+        <td>90994</td>
+        <td>11</td>
+        <td>19.6</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>go-hierarchy</td>
+        <td>45007</td>
+        <td>490109</td>
+        <td>588976</td>
+        <td>17</td>
+        <td>8.3</td>
+        <td>10</td>
+        <td>144.2</td>
+    </tr>
+    <tr>
+        <td>geospecies</td>
+        <td>450609</td>
+        <td>2201532</td>
+        <td>91</td>
+        <td>3</td>
+        <td>0.2</td>
+        <td>3</td>
+        <td>9.6</td>
+    </tr>
+</table>
 
 
 **g<sub>2</sub>**
@@ -79,16 +187,125 @@ S -> subClassOf_r S subClassOf | subClassOf_r subClassOf
 S -> subClassOf_r S subClassOf | subClassOf
 ```
 
-| Graph        |   V    |    E    |  nnz   | it |  time | it | time  |
-|--------------|--------|---------|--------|----|-------|----|-------|
-| generations  | 129    | 273     | 0      | 0  | <0.01 | 0  | <0.01 |
-| travel       | 131    | 277     | 63     | 7  | 0.02  | 2  | 0.3   |
-| funding      | 778    | 1086    | 1158   | 7  | 0.02  | 2  | 0.4   |
-| wine         | 733    | 1839    | 133    | 7  | 0.02  | 2  | 0.3   |
-| pizza        | 671    | 1980    | 1262   | 13 | 0.04  | 3  | 0.5   |
-| core         | 1323   | 2752    | 214    | 7  | 0.02  | 2  | 0.3   |
-| pathways     | 6238   | 12363   | 3117   | 9  | 0.02  | 4  | 0.8   |
-| enzyme       | 48815  | 86543   | 8163   | 9  | 0.05  | 6  | 1.5   |
-| eclass       | 239111 | 360248  | 96163  | 9  | 5.3   | 5  | 213   |
-| go-hierarchy | 45007  | 490109  | 738937 | 17 | 3.6   | 9  | 77.0  |
-| geospecies   | 450609 | 2201532 | 0      | 0  | <0.01 | 0  | <0.01 |
+<table>
+    <tr>
+        <td>Graph</td>
+        <td>V</td>
+        <td>E</td>
+        <td>nnz</td>
+        <td>it</td>
+        <td>time</td>
+        <td>it</td>
+        <td>time</td>
+    </tr>
+    <tr>
+        <td>generations</td>
+        <td>129</td>
+        <td>273</td>
+        <td>0</td>
+        <td>0</td>
+        <td>&lt;0.01</td>
+        <td>0</td>
+        <td>&lt;0.01</td>
+    </tr>
+    <tr>
+        <td>travel</td>
+        <td>131</td>
+        <td>277</td>
+        <td>63</td>
+        <td>7</td>
+        <td>0.02</td>
+        <td>2</td>
+        <td>0.3</td>
+    </tr>
+    <tr>
+        <td>funding</td>
+        <td>778</td>
+        <td>1086</td>
+        <td>1158</td>
+        <td>7</td>
+        <td>0.02</td>
+        <td>2</td>
+        <td>0.4</td>
+    </tr>
+    <tr>
+        <td>wine</td>
+        <td>733</td>
+        <td>1839</td>
+        <td>133</td>
+        <td>7</td>
+        <td>0.02</td>
+        <td>2</td>
+        <td>0.3</td>
+    </tr>
+    <tr>
+        <td>pizza</td>
+        <td>671</td>
+        <td>1980</td>
+        <td>1262</td>
+        <td>13</td>
+        <td>0.04</td>
+        <td>3</td>
+        <td>0.5</td>
+    </tr>
+    <tr>
+        <td>core</td>
+        <td>1323</td>
+        <td>2752</td>
+        <td>214</td>
+        <td>7</td>
+        <td>0.02</td>
+        <td>2</td>
+        <td>0.3</td>
+    </tr>
+    <tr>
+        <td>pathways</td>
+        <td>6238</td>
+        <td>12363</td>
+        <td>3117</td>
+        <td>9</td>
+        <td>0.02</td>
+        <td>4</td>
+        <td>0.8</td>
+    </tr>
+    <tr>
+        <td>enzyme</td>
+        <td>48815</td>
+        <td>86543</td>
+        <td>8163</td>
+        <td>9</td>
+        <td>0.05</td>
+        <td>6</td>
+        <td>1.5</td>
+    </tr>
+    <tr>
+        <td>eclass</td>
+        <td>239111</td>
+        <td>360248</td>
+        <td>96163</td>
+        <td>9</td>
+        <td>5.3</td>
+        <td>5</td>
+        <td>213</td>
+    </tr>
+    <tr>
+        <td>go-hierarchy</td>
+        <td>45007</td>
+        <td>490109</td>
+        <td>738937</td>
+        <td>17</td>
+        <td>3.6</td>
+        <td>9</td>
+        <td>77.0</td>
+    </tr>
+    <tr>
+        <td>geospecies</td>
+        <td>450609</td>
+        <td>2201532</td>
+        <td>0</td>
+        <td>0</td>
+        <td>&lt;0.01</td>
+        <td>0</td>
+        <td>&lt;0.01</td>
+    </tr>
+</table>
