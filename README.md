@@ -30,17 +30,17 @@ And then construct the equation with:
 ```
 eq = Equation(grm, grh)
 ```
-Now you can solve the obtained system with auto-constracted function with two different methods:
+Now you can solve the obtained system with two different methods:
 - Naive Iterative Method
     ```
     res = eq.naive_iteration()
     ```
 - Newton-Krylov Method
     ```
-    res = eq.newton_krylov()
+    res = eq.newton_krylov(equation)
     ```
 
-Or you can also choose your function, initial guess for iterative process and tolerance:
+Or you can also choose parameters, such as initial guess for iterative process and tolerance:
 ```
 res = eq.newton_krylov(equation=another_function, initial_guess=x0, tol=10e-6, info=True)
 ```
