@@ -116,7 +116,7 @@ def nonlin_solve(F, x0, en, k, iter=None, verbose=False,
         s = 1.0
         x = x + s*dx
         Fx = func(x.reshape(en*k, en))
-        Fx_norm_new = cp.linalg.norm(Fx)
+        Fx_norm_new = linalg.norm(Fx)
 
         jacobian.update(x.copy(), Fx)
         Fx_norm = Fx_norm_new
