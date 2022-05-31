@@ -163,73 +163,6 @@ class Equation:
         self.alp = grammar.tc + grammar.ntc
         
         self.matrices = graph.matrices
-                
-
-    
-    def equation_try3(self, mtx):
-
-        mtx = (0.2 * self.matrices[1].dot(mtx).dot(self.matrices[3]) + 0.15 * self.matrices[1].dot(self.matrices[3]) + 0.4 *
-                self.matrices[4].dot(mtx).dot(self.matrices[5]) + 0.25 * self.matrices[4].dot(self.matrices[5])) - mtx
-        return mtx
-
-    def equation_try4(self, mtx):
-
-        mtx = (0.55 * self.matrices[1].dot(mtx).dot(self.matrices[2]) + 0.45 * self.matrices[1].dot(self.matrices[2])) - mtx
-        return mtx
-
-
-    # def equation_try(self, mtx):
-    #     step_matrices = dict()
-    #
-    #     for ind in range(self.alp + 1):
-    #         step_matrices[ind] = self.matrices[ind]
-    #
-    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
-    #         step_matrices[ind] = mtx[i * self.en:(i + 1) * self.en, :]
-    #
-    #     for l in self.rules.keys():
-    #
-    #         r = self.rules[l]
-    #         for r_i in r:
-    #             if len(r_i) == 2:
-    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[1] * step_matrices[r_i[0]]
-    #             else:
-    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[2] * step_matrices[r_i[0]].dot(
-    #                     step_matrices[r_i[1]])
-    #         step_matrices[l] = step_matrices[self.alp]
-    #         step_matrices[self.alp] = np.empty(shape=(self.en, self.en))
-    #
-    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
-    #         mtx[i * self.en:(i + 1) * self.en, :] = step_matrices[ind] - mtx[i * self.en:(i + 1) * self.en, :]
-    #
-    #     return mtx
-
-    # def equation_try2(self, mtx):
-    #     step_matrices = dict()
-    #
-    #     for ind in range(self.alp+1):
-    #         step_matrices[ind] = self.matrices[ind]
-    #
-    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
-    #         step_matrices[ind] = mtx[i * self.en:(i + 1) * self.en, :]
-    #
-    #
-    #     for l in self.rules.keys():
-    #
-    #         r = self.rules[l]
-    #         for r_i in r:
-    #             if len(r_i) == 2:
-    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[1] * step_matrices[r_i[0]]
-    #             else:
-    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[2] * step_matrices[r_i[0]].dot(
-    #                     step_matrices[r_i[1]])
-    #         step_matrices[l] = step_matrices[self.alp]
-    #         step_matrices[self.alp] = cp.zeros(shape=(self.en, self.en))
-    #
-    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
-    #         mtx[i * self.en:(i + 1) * self.en, :] = step_matrices[ind] - mtx[i * self.en:(i + 1) * self.en, :]
-    #
-    #     return mtx
 
     def ni_equation(self, prev_step, next_step):
 
@@ -296,51 +229,53 @@ class Equation:
 
         return prev_step
 
-    def nk_equation(self, step): #### change!!!!
-        step_matrices = dict()
+    # def nk_equation(self, step):
+    #     step_matrices = dict()
+    #
+    #     for ind in self.grammar.terminals.values():
+    #         step_matrices[ind] = self.matrices[ind]
+    #
+    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
+    #         step_matrices[ind] = step[i * self.en:(i + 1) * self.en, :]
+    #
+    #     step_matrices[self.alp] = sparse.csr_matrix((self.en, self.en))
+    #
+    #     for l in self.rules.keys():
+    #
+    #         r = self.rules[l]
+    #         for r_i in r:
+    #             if len(r_i) == 2:
+    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[1] * step_matrices[r_i[0]]
+    #             else:
+    #                 step_matrices[self.alp] = step_matrices[self.alp] + r_i[2] * step_matrices[r_i[0]].dot(step_matrices[r_i[1]])
+    #         step_matrices[l] = step_matrices[self.alp]
+    #         step_matrices[self.alp] = sparse.csr_matrix((self.en, self.en))
+    #
+    #     for i, ind in enumerate(self.grammar.nonterminals.values()):
+    #         step[i * self.en:(i + 1) * self.en, :] = step_matrices[ind] - step[i * self.en:(i + 1) * self.en, :]
+    #
+    #     # start = self.grammar.nonterminals['S']
+    #     # res_S = sparse.csr_matrix((self.en, self.en))
+    #     # res_S[start * self.en:(start + 1) * self.en, :] = step_matrices[start] - step[start * self.en:(start + 1) * self.en, :]
+    #
+    #     return step
 
-        for ind in range(self.alp + 1):
-            step_matrices[ind] = self.matrices[ind]
+    def newton_krylov(self, equation, initial_guess=None, tol=10e-15, info=True):
 
-        for i, ind in enumerate(self.grammar.nonterminals.values()):
-            step_matrices[ind] = step[i * self.en:(i + 1) * self.en, :]
+        k = 1 #self.grammar.ntc
 
-        for l in self.rules.keys():
-
-            r = self.rules[l]
-            for r_i in r:
-                if len(r_i) == 2:
-                    step_matrices[self.alp] = step_matrices[self.alp] + r_i[1] * step_matrices[r_i[0]]
-                else:
-                    step_matrices[self.alp] = step_matrices[self.alp] + r_i[2] * step_matrices[r_i[0]].dot(
-                        step_matrices[r_i[1]])
-            step_matrices[l] = step_matrices[self.alp]
-            step_matrices[self.alp] = np.empty(shape=(self.en, self.en))
-
-        for i, ind in enumerate(self.grammar.nonterminals.values()):
-            step[i * self.en:(i + 1) * self.en, :] = step_matrices[ind] - step[i * self.en:(i + 1) * self.en, :]
-
-        return step
-
-    def newton_krylov(self, initial_guess=None, equation=None, tol=10e-15, info=True):
-
-        init_step = dict()
         if initial_guess is None:
-            for ind in self.grammar.nonterminals.values():
-                init_step[ind] = sparse.csr_matrix((self.en, self.en))
+            init_step = sparse.csr_matrix((self.en, self.en))
         else:
-            pass
-            # for i, ind in enumerate(self.grammar.nonterminals.values()):
-            #     prev_step[ind] = initial_guess[ind]
-        for ind in self.grammar.terminals.values():
-            init_step[ind] = self.matrices[ind]
+            init_step = initial_guess
 
-        if equation is None:
-            equation = self.equation_try3 ### self.nk_equation !!!!!!!!!!!!!!!!!!!
+        # if equation is None:
+        #     equation = self.nk_equation
 
-        start = self.grammar.nonterminals['S']
-        k = 1 #grm.ntc
+        res = nonlin_solve(equation, init_step, self.en, k, verbose=info, f_tol=tol)
 
-        res = nonlin_solve(equation, init_step[start], self.en, k, verbose=info, f_tol=tol)
+        # start = self.grammar.nonterminals['S']
+        # res_S = sparse.csr_matrix((self.en, self.en))
+        # res_S[start * self.en:(start + 1) * self.en, :] = res[start * self.en:(start + 1) * self.en, :]
 
         return res
